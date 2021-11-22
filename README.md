@@ -7,7 +7,7 @@ Parse to HTML clean JSON Data from [Editor.js](https://editorjs.io/ "Editor.js H
 ## Installation
 
 ```
-composer require boring-dragon/editorjs-simple-html-parser
+composer require atlza/editorjs-simple-html-parser
 ```
 
 ## Usage
