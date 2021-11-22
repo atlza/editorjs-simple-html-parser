@@ -99,52 +99,15 @@ class Parser
     {
         if (!$this->hasBlocks()) throw new Exception('No Blocks to parse !');
         foreach ($this->data->blocks as $block) {
-            switch ($block->type) {
-                case 'header':
-                    $this->parseHeader($block);
-                    break;
-                case 'delimiter':
-                    $this->parseDelimiter();
-                    break;
-                case 'code':
-                    $this->parseCode($block);
-                    break;
-                case 'paragraph':
-                    $this->parseParagraph($block);
-                    break;
-                case 'quote':
-                    $this->parseQuote($block);
-                    break;
-                case 'link':
-                    $this->parseLink($block);
-                    break;
-                case 'embed':
-                    $this->parseEmbed($block);
-                    break;
-                case 'raw':
-                    $this->parseRaw($block);
-                    break;
-                case 'list':
-                    $this->parseList($block);
-                    break;
-                case 'warning':
-                    $this->parseWarning($block);
-                    break;
-                case 'image':
-                    $this->parseStandardImage($block);
-                    break;
-                case 'simpleImage':
-                    $this->parseImage($block);
-                    break;
-                case 'table':
-                    $this->parseTable($block);
-                    break;
-                case 'linkTool':
-                    $this->parseLinkTool($block);
-                    break;
-                default:
-                    break;
-            }
+
+
+                $methodName = 'parse'.ucfirst($block->type);
+                if (method_exists($this, $methodName)) {
+                    $this->{$methodName}();
+                } else {
+                    //else can be removed to not throw error
+                    throw new Exception('Unknow block, unable to parse');
+                }
         }
     }
 
@@ -369,7 +332,7 @@ class Parser
         $this->dom->appendChild($wrapper);
     }
 
-    private function parseImage($block)
+    private function parseSimpleImage($block)
     {
         $figure = $this->dom->createElement('figure');
 
@@ -398,7 +361,7 @@ class Parser
         $this->dom->appendChild($figure);
     }
 
-    private function parseStandardImage($block)
+    private function parseImage($block)
     {
         $figure = $this->dom->createElement('figure');
 
