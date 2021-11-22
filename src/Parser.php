@@ -99,15 +99,13 @@ class Parser
     {
         if (!$this->hasBlocks()) throw new Exception('No Blocks to parse !');
         foreach ($this->data->blocks as $block) {
-
-
-                $methodName = 'parse'.ucfirst($block->type);
-                if (method_exists($this, $methodName)) {
-                    $this->{$methodName}();
-                } else {
-                    //else can be removed to not throw error
-                    throw new Exception('Unknow block, unable to parse');
-                }
+            $methodName = 'parse'.ucfirst($block->type);
+            if (method_exists($this, $methodName)) {
+                $this->{$methodName}( $block );
+            } else {
+                //else can be removed to not throw error
+                throw new Exception('Unknow block, unable to parse');
+            }
         }
     }
 
