@@ -104,7 +104,7 @@ class Parser
                 $this->{$methodName}( $block );
             } else {
                 //else can be removed to not throw error
-                throw new Exception('Unknow block, unable to parse');
+                throw new Exception('Unknow block "'.$block->type.'", unable to parse');
             }
         }
     }
