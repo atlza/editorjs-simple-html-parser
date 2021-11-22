@@ -374,7 +374,7 @@ class Parser
         if ($block->data->stretched) $imgAttrs[] = "{$this->prefix}-image-stretched";
         $imgAttrs = array_merge($imgAttrs, $this->customImgAttrs);
 
-        $img->setAttribute('src', $block->data->file->url);
+        $img->setAttribute('src', $block->data->url);
         $img->setAttribute('class', implode(' ', $imgAttrs));
 
         $figure->appendChild($img);
