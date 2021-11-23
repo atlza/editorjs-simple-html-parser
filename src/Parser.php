@@ -330,6 +330,37 @@ class Parser
         $this->dom->appendChild($wrapper);
     }
 
+    private function parsePersonality($block)
+    {
+        $parentDiv = $this->dom->createElement('div');
+        $parentDiv->setAttribute('class', "{$this->prefix}-personality");
+
+        $figureDiv = $this->dom->createElement('div');
+        $figureDiv->setAttribute('class', "{$this->prefix}-personality__photo");
+
+        $nameDiv = $this->dom->createElement('div');
+        $nameDiv->setAttribute('class', "{$this->prefix}-personality__name");
+        $name = new DOMText($block->data->name);
+        $nameDiv->appendChild($name);
+
+        $descriptionDiv = $this->dom->createElement('div');
+        $descriptionDiv->setAttribute('class', "{$this->prefix}-personality__name");
+        $description = new DOMText($block->data->description);
+        $descriptionDiv->appendChild($description);
+
+        $linkDiv = $this->dom->createElement('div');
+        $linkDiv->setAttribute('class', "{$this->prefix}-personality__link");
+        $link = new DOMText($block->data->link);
+        $linkDiv->appendChild($link);
+
+        $parentDiv->appendChild($figureDiv);
+        $parentDiv->appendChild($nameDiv);
+        $parentDiv->appendChild($descriptionDiv);
+        $parentDiv->appendChild($linkDiv);
+
+        $this->dom->appendChild($parentDiv);
+    }
+
     private function parseSimpleImage($block)
     {
         $figure = $this->dom->createElement('figure');
