@@ -337,6 +337,7 @@ class Parser
 
         $figureDiv = $this->dom->createElement('div');
         $figureDiv->setAttribute('class', "{$this->prefix}-personality__photo");
+        $figureDiv->setAttribute('style', "background: url(".$block->data->photo.")");
 
         $nameDiv = $this->dom->createElement('div');
         $nameDiv->setAttribute('class', "{$this->prefix}-personality__name");
@@ -344,7 +345,7 @@ class Parser
         $nameDiv->appendChild($name);
 
         $descriptionDiv = $this->dom->createElement('div');
-        $descriptionDiv->setAttribute('class', "{$this->prefix}-personality__name");
+        $descriptionDiv->setAttribute('class', "{$this->prefix}-personality__description");
         $description = new DOMText($block->data->description);
         $descriptionDiv->appendChild($description);
 
