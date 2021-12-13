@@ -341,8 +341,11 @@ class Parser
 
         $nameDiv = $this->dom->createElement('div');
         $nameDiv->setAttribute('class', "{$this->prefix}-personality__name");
+        $nameLink = $this->dom->createElement('a');
+        $nameLink->setAttribute('href', $block->data->link);
         $name = new DOMText($block->data->name);
-        $nameDiv->appendChild($name);
+        $nameLink->appendChild($name);
+        $nameDiv->appendChild($nameLink);
 
         $descriptionDiv = $this->dom->createElement('div');
         $descriptionDiv->setAttribute('class', "{$this->prefix}-personality__description");
