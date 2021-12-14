@@ -65,6 +65,7 @@ Package | Key | Main CSS Class
 `@editorjs/simple-image` | `simpleImage` | `.prs-image`
 `@editorjs/warning` | `warning` | `.prs-warning`
 `@editorjs/quote` | `quote` | `.prs-quote`
+`@editorjs/personality` | `personality` | `.prs-personality`
 
 ## Methods 
 
@@ -192,3 +193,15 @@ Return Editor.js content blocks
     Raw HTML ...
 </div>
 ```
+
+##### Personality
+
+```html
+<div class="prs-personality">
+ <div class="prs-personality__photo" style="background: url(yourImage.webp)"></div>
+ <div class="prs-personality__name">John Doe</div>
+ <div class="prs-personality__description">Itaque a sapientia praecipitur se ipsam, si usus sit, sapiens ut relinquat.</div>
+</div>
+```
+
+
